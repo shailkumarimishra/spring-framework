@@ -1,0 +1,35 @@
+Q1*** What is dependency injection and what are the advantages?
+Ans:- Dependency injection is a technique in which objects do not create their dependencies on itself, instead
+	  objects declared dependency that they need and it is external object job or framework job to provide 
+	  concreate dependencies to objects.
+		
+	Types of Dependency injection:-
+	1. Setter injection
+	2. Constructor injection
+	
+	Advantages of using Dependency injection are:-
+	1. To increase code reusability.
+	2. To increase code readability.
+	3. To increase code maintainability.
+	4. To increase code testability.
+	5. To reduce coupling.
+	6. To increase cohesion.
+	
+Q2. what is lazy loading & eager loading?
+
+Q3. Injecting various types of bean properties with setter injection & constructor injection.
+	bean may contain following properties type:-
+	1. Simple types (example-> all primitives, wrappers, String & Date)
+	2. List of Simple type 
+	3. Set of Simple type
+	4. Map of Simple type
+	5. Other bean type (reference type)
+	6. Collection of other bean type (like customer, student type)
+	7. Properties of Simple type
+	
+	
+	
+	
+	
+	
+	
