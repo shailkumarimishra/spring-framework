@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="stu" class="com.ioc.demo.Student">
+		<!-- Simple types -->
+	   <property name="name" value="Anu"/>
+	   <property name="sid" value="10"/>
+	   <property name="phoneNo" value="1234"/>
+	  <!-- List of Simple types -->
+	  <property name="emails">
+	  <list>
+	  	<value>shail@gmail.com</value>
+	  	<value>anu@gmail.com</value>
+	  </list>
+	  </property>
+		</bean>
+		
+</beans>
