@@ -12,5 +12,10 @@ public class IOCClient {
 		Student stu = context.getBean("stu",Student.class);
 		System.out.println(stu.getName()+" "+stu.getSid()+" "+stu.getPhoneNo());
 		stu.getEmails().forEach(System.out::println);
+		stu.getCourses().forEach(c->System.out.println(c.getCourseId()+" "+c.getSubject()));
+		stu.getSubjects().forEach(System.out::println);
+		stu.getProfile().forEach((k,v)->System.out.println(k+" "+v));
+		stu.getMyProps().forEach((k,v)->System.out.println(k+" "+v));
+		System.out.println(stu.getAddress().getCity()+" "+stu.getAddress().getState());
 	}
 }
