@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
-<bean id="emp" class="com.ioc.demo.Employee">
+<bean id="emp" class="com.ioc.demo.Employee" scope="singleton">
 
 <constructor-arg value="101"/>
 <constructor-arg value="Shail"/>
@@ -15,9 +15,56 @@
 </list>
 </constructor-arg>
 <constructor-arg ref="add"/>
+<constructor-arg>
+<list>
+<ref bean="dept"/>
+</list>
+</constructor-arg>
+<constructor-arg>
+<props>
+<prop key="333">XYZ</prop>
+<prop key="444">ABC</prop>
+</props>
+</constructor-arg>
 </bean>
 <bean id="add" class="com.ioc.demo.Address">
 <property name="city" value="Patna"/>
 <property name="state" value="Bihar"/>
 </bean>	
+<bean id="dept" class="com.ioc.demo.Department">
+<property name="deptId" value="999"/>
+<property name="deptName" value="civil"></property>
+</bean>
+<bean id="emp" class="com.ioc.demo.Employee">
+
+<constructor-arg value="101"/>
+<constructor-arg value="Shail"/>
+ 
+<constructor-arg>
+<list>
+<value>anjali@gmail.com</value>
+<value>shradha@gmail.com</value>
+</list>
+</constructor-arg>
+<constructor-arg ref="add1"/>
+<constructor-arg>
+<list>
+<ref bean="dept1"/>
+</list>
+</constructor-arg>
+<constructor-arg>
+<props>
+<prop key="666">XYZ</prop>
+<prop key="888">ABC</prop>
+</props>
+</constructor-arg>
+</bean>
+<bean id="add1" class="com.ioc.demo.Address">
+<property name="city" value="Bhopal"/>
+<property name="state" value="M.P"/>
+</bean>	
+<bean id="dept1" class="com.ioc.demo.Department">
+<property name="deptId" value="555"/>
+<property name="deptName" value="M.E"></property>
+</bean>
 </beans>

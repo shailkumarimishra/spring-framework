@@ -27,6 +27,12 @@ Q3. Injecting various types of bean properties with setter injection & construct
 	6. Collection of other bean type (like customer, student type)
 	7. Properties of Simple type
 	
+Q4. Types of Scope in Spring:-
+	1. Singleton (default Scope)
+	2. Prototype
+	3. Session
+	4. Request
+	5. Global Session
 	
 	
 	
