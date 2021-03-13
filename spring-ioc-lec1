@@ -27,12 +27,109 @@ Q3. Injecting various types of bean properties with setter injection & construct
 	6. Collection of other bean type (like customer, student type)
 	7. Properties of Simple type
 	
-Q4. Types of Scope in Spring:-
+Q4*** Types of Scope in Spring:-
 	1. Singleton (default Scope)
 	2. Prototype
 	3. Session
 	4. Request
-	5. Global Session
+	5. Global Session (Out of Syllabus)
+	
+I) Singleton Scope:-
+	When bean scope is singleton then only one instance will be created for that bean and same instance 
+	will be returned when you call getBean() method.
+	
+	Singleton is the default scope in the spring container.
+	when scope is Singleton the default loading will be aggressive loading.
+	
+II) Prototype Scope:-
+	when bean scope is Prototype then new instance will be created for the bean when you call getBean() method.
+	
+	Default loading type will be lazy loading.
+	
+III) Session Scope:-
+	 It is equals to HTTPSession in the web application.
+	 
+IV) Request Scope:-
+	 It is equals to HTTPSession in the web application.
+	 
+V)  Global Scope:-
+	 It is equals to the session in the portlet based application.
+	 
+Q. How can we configure scope in xml file?
+Ans :- <bean id="emp" class="com.ioc.demo.Employee" scope="prototype" lazy-init="true"> 
+
+->***  Eager Loading or Aggressive Loading:-
+
+	In the case of Eager Loading all the beans will be loaded, instanciated and initialized by the container at 
+	container start of time.
+	
+	<bean id="emp" class="com.ioc.demo.Employee" scope="prototype" lazy-init="false">
+	
+->***  Lazy Loading:-
+	
+	In the case of Lazy Loading all the beans will be loaded, instanciated and initialized when you/container 
+	try to call getBean() method
+	
+	<bean id="emp" class="com.ioc.demo.Employee" scope="prototype" lazy-init="true">
+	
+->	Wiring*** :-
+	Wiring is the process of injecting the dependencies of the beans.
+	It can be done in 2 ways:-
+	a) Explicit Wiring
+	b) Implicit Wiring/Auto Wiring.
+	 
+a)  Explicit Wiring:-
+	In the case of Explicit Wiring you have to specify the beans dependencies explicitly then container will
+	inject those depencies.
+	<beans>
+	<bean id="stu" class="com.ioc.demo.Student">
+		<!-- Simple types -->
+	   <property name="name" value="Anu"/>
+	   <property name="sid" value="10"/>
+	   <property name="phoneNo" value="1234"/>
+	</bean>
+	</beans>
+	
+b)  Auto Wiring/Implicit Wiring:-
+	In the case of Auto Wiring spring container detects the bean dependencies automatically and injects those 
+	dependencies.
+	<bean id="add" class="com.ioc.demo.Address" autowire="***">
+	following are possible values of Auto wire Attributes:-
+	1. By Name:-  <bean id="add" class="com.ioc.demo.Address" autowire="byName">
+	    
+	2. By Type:- <bean id="add" class="com.ioc.demo.Address" autowire="byType">
+	
+	3. Constructor:- <bean id="add" class="com.ioc.demo.Address" autowire="constructor">
+	4. Auto detect:-
+	
+1. byName:-
+	when auto wired value is byName then spring container checks whether any beans instance running in the 
+	container whose name or ID is same as the property(variable) name or not.
+	
+	If bean is found with matching name then it will be injected otherwise in property remains uninjected.
+	bean will be instanciated using default constructor.
+	Dependent beans instances will be detected using bean name.
+	detected beans instances will be injected through setter injection only.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	   
+	   
+	   
+
+	 
+	 
+	 
+	 
+	 
 	
 	
 	

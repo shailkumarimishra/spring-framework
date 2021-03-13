@@ -49,7 +49,7 @@
 	  </list>
 	  </property>
 		</bean>
-		<bean id="add" class="com.ioc.demo.Address">
+		<bean id="add" class="com.ioc.demo.Address" autowire="byName">
 		<property name="city" value="Bhopal"/>
 		<property name="state" value="M.P"/>
 	  </bean>

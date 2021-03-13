@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /*
  * Q1. What is the difference b/w BeanFactory and ApplicationContext?
+ * Q2. What is the difference b/w Setter Injection and Constructor Injection and which one is better?
  */
 public class IOCClient {
 	public static void main(String[] args) {

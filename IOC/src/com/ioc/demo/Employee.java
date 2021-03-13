@@ -1,7 +1,9 @@
 package com.ioc.demo;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 public class Employee {
 private int empId;
@@ -10,8 +12,20 @@ private List<String> emails;
 private Address address;
 private List<Department> dept; 
 private Properties myProps;
+private Set<String> projects;
+private Map<Integer,String> profile;
 
-
+public Employee(int empId, String empName, List<String> emails, Address address, List<Department> dept,
+		Properties myProps, Set<String> projects, Map<Integer, String> profile) {
+	this.empId = empId;
+	this.empName = empName;
+	this.emails = emails;
+	this.address = address;
+	this.dept = dept;
+	this.myProps = myProps;
+	this.projects = projects;
+	this.profile = profile;
+}
 public Employee(int empId, String empName, List<String> emails, Address address, List<Department> dept,
 		Properties myProps) {
 	this.empId = empId;
@@ -61,8 +75,9 @@ public void setEmpId(int empId) {
 @Override
 public String toString() {
 	return "Employee [empId=" + empId + ", empName=" + empName + ", emails=" + emails + ", address=" + address
-			+ ", dept=" + dept + ", myProps=" + myProps + "]";
+			+ ", dept=" + dept + ", myProps=" + myProps + ", projects=" + projects + ", profile=" + profile + "]";
 }
+
 
 
 
