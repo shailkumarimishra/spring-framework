@@ -3,6 +3,12 @@ package com.ioc.demo;
 public class Address {
 private String city;
 private String state;
+{
+	System.out.println("address static");
+}
+public Address() {
+	System.out.println("Address default constructor");
+}
 public String getCity() {
 	return city;
 }

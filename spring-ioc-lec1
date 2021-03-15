@@ -106,7 +106,7 @@ b)  Auto Wiring/Implicit Wiring:-
 	when auto wired value is byName then spring container checks whether any beans instance running in the 
 	container whose name or ID is same as the property(variable) name or not.
 	
-	If bean is found with matching name then it will be injected otherwise in property remains uninjected.
+	If bean is found with matching name then it will be injected otherwise property remains uninjected.
 	bean will be instanciated using default constructor.
 	Dependent beans instances will be detected using bean name.
 	detected beans instances will be injected through setter injection only.

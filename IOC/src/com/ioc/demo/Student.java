@@ -15,6 +15,9 @@ private Map<Integer,String> profile;
 private Properties myProps;
 private Address address;
 private List<Course> courses;
+{
+	System.out.println("student static");
+}
  public Student() {
 	 System.out.println("student constructor");
  }
@@ -73,7 +76,7 @@ public int getSid() {
 
 public void setSid(int sid) {
 	this.sid = sid;
-	System.out.println("sid");
+//	System.out.println("sid");
 }
 
 public Long getPhoneNo() {
@@ -82,7 +85,7 @@ public Long getPhoneNo() {
 
 public void setPhoneNo(Long phoneNo) {
 	this.phoneNo = phoneNo;
-	System.out.println("phone no");
+//	System.out.println("phone no");
 }
 
 public String getName() {
@@ -91,6 +94,6 @@ public String getName() {
 
 public void setName(String name) {
 	this.name = name;
-	System.out.println("name");
+//	System.out.println("name");
 }
 }
