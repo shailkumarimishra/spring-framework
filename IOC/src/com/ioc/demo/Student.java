@@ -13,8 +13,9 @@ private List<String> emails;
 private Set<String> subjects;
 private Map<Integer,String> profile;
 private Properties myProps;
-private Address address;
 private List<Course> courses;
+private Address address;
+
 {
 	System.out.println("student static");
 }
@@ -76,7 +77,7 @@ public int getSid() {
 
 public void setSid(int sid) {
 	this.sid = sid;
-//	System.out.println("sid");
+	System.out.println("setSid() from Student");
 }
 
 public Long getPhoneNo() {
@@ -85,7 +86,7 @@ public Long getPhoneNo() {
 
 public void setPhoneNo(Long phoneNo) {
 	this.phoneNo = phoneNo;
-//	System.out.println("phone no");
+	System.out.println("phoneNo() from Student");
 }
 
 public String getName() {
@@ -94,6 +95,6 @@ public String getName() {
 
 public void setName(String name) {
 	this.name = name;
-//	System.out.println("name");
+	System.out.println("setName() from Student");
 }
 }

@@ -19,6 +19,7 @@ public String getSubject() {
 	return subject;
 }
 public void setSubject(String subject) {
+	System.out.println("setSubject() method of course");
 	this.subject = subject;
 }
 

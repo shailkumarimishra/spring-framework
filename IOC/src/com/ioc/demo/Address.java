@@ -9,6 +9,18 @@ private String state;
 public Address() {
 	System.out.println("Address default constructor");
 }
+
+public Address(String city, String state) {
+	this.city = city;
+	this.state = state;
+	System.out.println("two argumented constructor of Address");
+}
+
+public Address(String city) {
+	this.city = city;
+	System.out.println("one argumented constructor of Address");
+}
+
 public String getCity() {
 	return city;
 }

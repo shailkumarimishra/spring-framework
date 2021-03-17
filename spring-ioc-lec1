@@ -111,6 +111,54 @@ b)  Auto Wiring/Implicit Wiring:-
 	Dependent beans instances will be detected using bean name.
 	detected beans instances will be injected through setter injection only.
 	
+Q1) What happend at container startup time?
+Ans:- step1- Loads and initilise(calling default constructor) all the beans according to beans entry in xml file.  
+      
+	  step2- Independent beans initilise their property first then dependent beans means property 
+			 initilization will happen bottom to top by calling setter() method.
+	  
+	  step3- Spring container will check any autowire value is specified or not.
+	  
+				a) byName - If autowired value is byName then spring container will check any bean is running in
+							the container with the specified property(variable)name or not.
+							If bean is found with specified name then container will initilize the bean otherwise
+							it will not initilise.
+							
+				b) byType - When autowire attribute value is byType then spring container will check whether any
+							bean instance is running the container whose type(classType) is same as property type
+							or not.
+							
+                  Case1- If exactly one bean is found with matching type then it will be injected.
+				  
+                  Case2- If 0 bean is found with matching type then bean property remains uninjected.
+				  
+                  Case3- If two or more beans are found with the matching type then exception will be thrown 
+						 called "UnsatisfiedDependencyException".				  
+				
+				c) constructor - When autowire attribute value is constructor then spring container will check
+								 whether any bean instance is running in the container whose type(classType) is 
+								 same as property type or not.
+								 Depending on the availability of bean instances spring container will identify
+								 the matching constructor and invoke the constructor to inject the dependency.
+					
+					Case1- If 0 bean is found with matching type then property remain uninjected.
+					
+					Case2- If exactly one bean is found with matching type and with matching constructor then 
+					       it will be injected.
+						   
+					Case3- If exactly one bean is found with matching type and without matching constructor then 
+					       bean property remains uninjected (will throw exception "UnsatisfiedDependencyException").
+						   
+					Case4- If 2 or more beans are found with matching type then container will try to pick one
+						   bean from available multiple beans based on byName autowire process first.
+						   
+						   If bean is not selected based on byName autowire process then container will simply 
+						   ignore it and property remains uninjected.
+					
+->  Anotation Based autowiring:-					
+						   
+					
+
 	
 	
 	

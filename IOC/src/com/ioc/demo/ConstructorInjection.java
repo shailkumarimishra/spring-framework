@@ -11,8 +11,8 @@ public class ConstructorInjection {
 		ApplicationContext context1 =new ClassPathXmlApplicationContext("config-constructor.xml");
 		Employee employee1 = context.getBean("emp",Employee.class);
 		System.out.println(employee.hashCode()+" "+employee1.hashCode());
-		employee.setEmpId(111);
-		employee1.setEmpId(222);
+//		employee.setEmpId(111);
+//		employee1.setEmpId(222);
 		System.out.println(employee);
 		System.out.println(employee1);
 	}
