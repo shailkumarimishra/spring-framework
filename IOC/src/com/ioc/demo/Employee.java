@@ -4,6 +4,9 @@ public class Employee {
 private int empId;
 private String empName;
 private Address address;
+private GrandParent gp;
+private Parent parent;
+private Child child;
 public Employee() {
 	System.out.println("default constructor of Employee");
 }

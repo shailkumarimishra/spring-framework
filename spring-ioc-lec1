@@ -155,9 +155,30 @@ Ans:- step1- Loads and initilise(calling default constructor) all the beans acco
 						   If bean is not selected based on byName autowire process then container will simply 
 						   ignore it and property remains uninjected.
 					
-->  Anotation Based autowiring:-					
-						   
-					
+->  Anotation Based autowiring:- 
+	To use annotation in the spring application do the following:-
+	1. must enable context name space like below-
+	
+		<beans xmlns="http://www.springframework.org/schema/beans"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns:context="http://www.springframework.org/schema/context"
+		 xsi:schemaLocation="http://www.springframework.org/schema/beans
+					https://www.springframework.org/schema/beans/spring-beans.xsd
+					http://www.springframework.org/schema/context
+					https://www.springframework.org/schema/context/spring-context.xsd"> 
+
+	2. Add <context:annotation-config/>	
+	   Now you can use annotations.
+
+Q1. @Autowire Vs @Resource
+  Note:-	@Autowire + @Qualifier = @Resource.	
+	
+	@Autowire:- When you use @Autowire then bean will be detected based on byType process and injects them
+				(their instances).
+				It's functionality is same as autowire = "byType".
+		Note:- When you use autowire = "byType" then bean will be detected based on data type and injects using
+			   setter methods where as when you use autowire then bean will be detected based on data type and 
+			   injects without using setter methods.
 
 	
 	

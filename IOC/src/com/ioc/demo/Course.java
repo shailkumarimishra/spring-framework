@@ -22,5 +22,9 @@ public void setSubject(String subject) {
 	System.out.println("setSubject() method of course");
 	this.subject = subject;
 }
+@Override
+public String toString() {
+	return "Course [courseId=" + courseId + ", subject=" + subject + "]";
+}
 
 }
