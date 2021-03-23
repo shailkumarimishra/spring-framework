@@ -4,18 +4,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
  
- <bean id="emp" class="com.ioc.demo.Employee" autowire="constructor">
+ <bean id="emp" class="com.ioc.demo.Employee" autowire="constructor" >
 
 <constructor-arg value="101"/>
 <constructor-arg value="Shail"/>
  </bean> 
- 
+ <alias name="emp" alias="tinu"/>
  <bean id="address" class="com.ioc.demo.Address" autowire="constructor">
 <constructor-arg value="Patna"/>
 <constructor-arg value="Bihar"/>
 </bean>
 
- <bean id="add" class="com.ioc.demo.Address" autowire="constructor">
+ <bean name="add add2" class="com.ioc.demo.Address" autowire="constructor">
 <constructor-arg value="Patna"/>
 <constructor-arg value="Bihar"/>
 </bean>

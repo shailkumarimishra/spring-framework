@@ -57,5 +57,4 @@
 	  <property name="courseId" value="111"/>
 	  <property name="subject" value="Servlet"/>
 	  </bean>
-	  
 </beans>

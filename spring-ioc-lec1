@@ -180,14 +180,40 @@ Q1. @Autowire Vs @Resource
 			   setter methods where as when you use autowire then bean will be detected based on data type and 
 			   injects without using setter methods.
 
+Note:- Basic package of spring 1. org.springframework.beans
+							   2. org.springframework.context
+							   
+Q Difference b/w BeanFactory and ApplicationContext
+	Ans:-  1. BeanFactory is an interface which has one concreate subclass XmlBeanFactory.
+			  where as ApplicationContext is also an interface as following concreate subclass:-
+					a) ClassPathXmlApplicationContext
+					b) FileSystemXmlApplicationContext
+					c) XmlWebApplicationContext
+					d) AnnotationConfigApplicationContext
 	
+			2. Beans configured with BeanFactory container will be loaded lazyily by default.
+			   where as Beans configured with  ApplicationContext will be loaded eagerly by default.
+			   
+			3. BeanFactory container doesn't support Annotation.
+			   where as ApplicationContext support Annotation.
+			
+			4. BeanFactory container doesn't support BeanPostProcessor, EventPublising.
+			   where as ApplicationContext support both.
+			
+			5. BeanFactory container doesn't support InterNationalization.
+			   where as ApplicationContext support it.
+			   
+			Note:- * ApplicationContext is a super set of BeanFactory.
+				   * BeanFactory is parent interface of ApplicationContext.  
+			
+		Similarities:- 
+			1.Loads the Bean.
+			2.Create the instance of the Bean.
+			3.Inject dependency with setter and constructor.
+			4.Maintain the Bean life cycle.
+			5.Destroying the Bean instances at container shut down time.
 	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	   

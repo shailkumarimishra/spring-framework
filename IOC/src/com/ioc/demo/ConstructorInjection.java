@@ -6,14 +6,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ConstructorInjection {
 	public static void main(String[] args) {
 		ApplicationContext context =new ClassPathXmlApplicationContext("config-constructor.xml");
-		Employee employee = context.getBean("emp",Employee.class);
+		Employee employee = context.getBean("tinu",Employee.class);
 //		System.out.println(employee);
-		ApplicationContext context1 =new ClassPathXmlApplicationContext("config-constructor.xml");
+		/*ApplicationContext context1 =new ClassPathXmlApplicationContext("config-constructor.xml");
 		Employee employee1 = context.getBean("emp",Employee.class);
 		System.out.println(employee.hashCode()+" "+employee1.hashCode());
 //		employee.setEmpId(111);
 //		employee1.setEmpId(222);
 		System.out.println(employee);
-		System.out.println(employee1);
+		System.out.println(employee1);*/
+		Address bean = context.getBean("add2",Address.class);
+		System.out.println(bean.getCity());
 	}
 }
