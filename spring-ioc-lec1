@@ -213,10 +213,31 @@ Q Difference b/w BeanFactory and ApplicationContext
 			4.Maintain the Bean life cycle.
 			5.Destroying the Bean instances at container shut down time.
 	
+->  Xml with name space:- 
 
+		1.The purpose of p-namespace is to reduce the xml file size.
+		  To implement the namespace you need to follow steps:-
+			a) Add xmlns:p="http://www.springframework.org/schema/p" in bean schema 
+			b) <bean id="add" class="com.ioc.demo.Address"
+					 p:city="Bhopal"
+					 p:state="M.P"/>
+				<property name= "city" value="Bhopal"/>
+				p:city="Bhopal" is the shortcut of above line.
+		
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+<bean id="add" class="com.ioc.demo.Address"
+		p:city="Bhopal"
+		p:state="M.P"/>
+</beans>	
 	
-	
-	   
+-> Bean Definition Inheritance(BDI):-
+	This concept allows to reuse various common properties of a bean.
 	   
 	   
 
