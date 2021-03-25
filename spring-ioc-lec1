@@ -238,7 +238,32 @@ Q Difference b/w BeanFactory and ApplicationContext
 	
 -> Bean Definition Inheritance(BDI):-
 	This concept allows to reuse various common properties of a bean.
-	   
+
+->  Property editor:-
+	If built-in property editor is not fullfill your requirement then you can write custom property editor.
+	for custom property editor you have to follow below steps:-
+	1) create a editor class extending PropertyEditorSupport.
+	2) override public void setAsText(String text){}.
+	3) register your custom editor 
+			<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+				<property name="customEditors">
+					<map>
+						<entry key="com.ioc.propertyeditor.StudentId" value="com.ioc.propertyeditor.StudentIdEditor"/>
+						<entry key="com.ioc.propertyeditor.Fee" value="com.ioc.propertyeditor.FeeEditor"/>
+					</map>
+				</property>
+			</bean> 
+
+->  Important Annotation and their use:-
+	1)@Autowire
+	2)@Resource
+	3)@Qualifier
+	4)@Service
+	5)@Repository
+	6)@Configuration
+	7)@Beans
+	8)@Component
+
 	   
 
 	 

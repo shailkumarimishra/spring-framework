@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+     <context:annotation-config/>
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+	<property name="customEditors">
+	<map>
+	<entry key="com.ioc.propertyeditor.StudentId" value="com.ioc.propertyeditor.StudentIdEditor"/>
+	<entry key="com.ioc.propertyeditor.Fee" value="com.ioc.propertyeditor.FeeEditor"/>
+	</map>
+	</property>
+	</bean> 
+	<bean id="stu" class="com.ioc.propertyeditor.Student">
+	<property name="sid" value="B12-444"/>
+	<property name="fee" value="20000,12000,8000"/>
+	<property name="name" value="Shail"/>
+	</bean>
+</beans>

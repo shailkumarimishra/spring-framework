@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+ <context:annotation-config/>
+ <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+ <property name="locations" >
+ <list>
+ <value>oracle.properties</value>
+ <value>mysql.properties</value>
+ </list>
+ </property>
+ </bean>
+ <!-- with namespace -->
+ <bean id="mysql" class="com.ioc.property.DataSource"
+ p:driverClass="${mysql.dc}"
+ p:url="${mysql.url}"
+ p:username="${mysql.username}"
+ p:password="${mysql.password}"/>
+ 
+ <bean id="oracle" class="com.ioc.property.DataSource"
+ p:driverClass="${oracle.dc}"
+ p:url="${oracle.url}"
+ p:username="${oracle.username}"
+ p:password="${oracle.password}"/>
+ 
+ <bean id="test" class="com.ioc.property.DataSourceTest" />
+</beans>
