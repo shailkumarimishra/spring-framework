@@ -264,8 +264,18 @@ Q Difference b/w BeanFactory and ApplicationContext
 	7)@Beans
 	8)@Component
 
-	   
+-> Message Bundle :-
+	When you are developing any web application you can write various message bundles suppotrs multiple languages.
+	To excess properties from message bundles you need to do following steps:-
+	1) Write one or more message bundles to support multiple languages.
+	   basename=messages
+	
+	2)  Access the properties of message bundles using getMessage() method of ApplicationContext.
 
+	3)	Register the bean ResourceBundleMessageSource with spring Context XML by specifying the basename like below.
+		<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+			<property name="basename" value="messages"/>
+		</bean>
 	 
 	 
 	 
