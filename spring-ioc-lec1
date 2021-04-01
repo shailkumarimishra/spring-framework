@@ -276,7 +276,80 @@ Q Difference b/w BeanFactory and ApplicationContext
 		<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 			<property name="basename" value="messages"/>
 		</bean>
-	 
+	
+->  Event and Listener :-
+	Their are 2 types of Event:-
+	1) System Event
+		e.g; onClick, onChange, onFocus
+		
+	2) User Event or Application Event
+		e.g; BatchEvent, WorkShopEvent
+	
+	For every event raised their must be a Listener to listen the event and to perform the required task.
+	
+	Main Goal of Spring Application Event mechanism is to decouple the application layers.
+	
+	Steps:-
+	A) Writing and publising Application Event
+		1) Writing Application Event
+			a)write your own event class by extending ApplicationEvent class.
+			
+			b) Declare the variable to hold the information about the event.
+		
+			c) Your event class should contain 2 argument constructor. First Argument is Source and 
+			   Second Argument is your information.
+			   
+		2) Publising Application Event
+			BatchEvent bevent=new BatchEvent(this, batch);
+			ctx.publishEvent(bevent);
+	
+	B) Writing and Registering Application Listener
+		1) Writing Application Listener
+			a) write your own listener class by implementing ApplicationListener interface.
+			
+			b) Override public void onApplicationEvent(ApplicationEvent event);
+			
+		2) Registering Application Listener
+			configure all the listener classes in Spring Context XML(event.xml)
+				<bean id="ambe" class="com.ioc.event.AmbeListener"/>
+				<bean id="anu" class="com.ioc.event.AnuListener"/>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+	
 	 
 	 
 	 
