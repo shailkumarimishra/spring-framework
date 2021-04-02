@@ -314,9 +314,111 @@ Q Difference b/w BeanFactory and ApplicationContext
 				<bean id="ambe" class="com.ioc.event.AmbeListener"/>
 				<bean id="anu" class="com.ioc.event.AnuListener"/>
 				
+->  Spring Container Life Cycle Methods:-
+		1) Initialization callback
+		2) Disposabale callback
+		3) ***Aware (Spring container wants to know who you are and where you are)
+		4) Extend Spring Container features
 				
+	1) Initialization callback:-
+		Sometimes you may get the requirement to initialize the resources required for your bean explicitily or
+		you may want varify the resources injected by the spring container.
+		
+		In this case, you have to write the resources, initialization code or verification code inside the 
+		initialization callback.
+		
+		Spring supports 4 ways for initialization :-
+		1) Write your own initialization method and mark it with @PostConstruct.
+			for e.g; 
+					@PostConstruct
+					public void init(){}
+		
+		2) Implements InitializingBean interface and override public void afterPropertiesSet() method.
+		
+		3) Write your own initialization method and specify the method name in bean definition (in xml).
+			for e.g; public void myInit(){}
+			<bean id="hello" class="com.ioc.lifecycle.Hello" init-method="myInit" />
+		
+		4) Specify like point-3 but use java configuration.
+				@Bean(initMethod = "myInit")
+					public Hello beanHello() {
+					return new Hello();
+					}
+					
+	2) Disposabale callback:-
+		you may get the requirement to clean up the resources then you can write clean up code inside the 
+		disposable call back.
+		
+		Spring supports 4 ways to clean up the resources:-
+		1) Write your own clean up method and mark it with @PreDestroy Annotation.
+			for e.g; 
+					@PreDestroy
+					public void cleanUp(){}		
+					
+		2) Implements DesposableBean Interface and Override the	public void destroy(){}.
+
+		3) Write your own clean up method and specify the method name in bean definition.
+				public void myCleanUp(){}
+				<bean id="hello" class="com.ioc.lifecycle.Hello" destroy-method="myCleanUp" />	
 				
-				
+		4) Same as point-3 but use java configuration.
+				@Bean(destroyMethod = "myCleanUp")
+					public Hello beanHello() {
+					return new Hello();
+					}	
+					
+	3) ***Aware:-
+		Sometimes you want to know what is bean name and where it is running then you can use the following 
+		aware interfaces:-
+		A) BeanNameAware :: public void setBeanName(String str)
+		B) BeanFactoryAware :: public void setBeanFactory(BeanFactory bf)
+		C) ApplicationContextAware :: public void setApplicationContext(ApplicationContext ctx)
+		
+	Note:- ApplicationContext object can be injected into the bean by 2 ways:-
+			1. Using @Autowire***
+			2. Using ApplicationContextAware interface.
+		
+	4) Extend Spring Container features:-
+		You can extend the spring container functionality using BeanPostProcessor.
+		You can acheive this in 3 steps:-
+		1) Write your own custom class by implementing BeanPostProcessor interface.
+		2) Override their methods.
+		3) Register your BeanPostProcessor with the Spring container.
+			public class MyContainer implements BeanPostProcessor{
+					public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+							return bean;
+						}
+						
+					public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+							return bean;
+						}
+			}
+		
+			<bean id="myContainer" class="com.ioc.lifecycle.MyContainer"/>
+		
+-> Life Cycle of Bean in the ApplicationContext container:-
+	1) Container loads the bean class into the memory.
+	2) Container creates the bean instance by using corresponding constructor(constructor injection).
+	3) Bean dependency will be injected with the following ways:-				
+		A) Annotation based autowiring.
+		B) XML based autowiring.
+	4) If bean class is implementing any Aware interfaces then their corresponding method will be invoked
+			A) BeanNameAware :: public void setBeanName(String str)
+			B) BeanFactoryAware :: public void setBeanFactory(BeanFactory bf)
+			C) ApplicationContextAware :: public void setApplicationContext(ApplicationContext ctx)
+	5) If BeanPostProcessor is registered then postProcessBeforeInitialization()method will be called by the 
+	   container.
+	6) If bean class is implementing InitializingBean interface then afterPropertiesSet() method will be called.
+	7) If BeanPostProcessor is registered then postProcessAfterInitialization() method will be called.
+	8) Fully initialized beans will be ready to use.
+	9) At Container shutdown time it will destroy all the bean instances. When container is destroying one bean
+	   instance it will do the following task:-
+		A) If any method is found with @PreDistroy Annotation then that method will be called.
+		B) If bean class is implementing DisposableBean interface then distroy() method will be called.
+		C) If bean definition contains destroy method attribute then that specified method will be called.
+	
+					
+		
 				
 				
 				

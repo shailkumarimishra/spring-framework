@@ -7,8 +7,6 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
      <context:annotation-config/>
-	<bean id="srv1" class="com.ioc.config.ServiceImpl1"/>  
-	<bean id="srv2" class="com.ioc.config.ServiceImpl2"/> 
-	<bean id="test" class="com.ioc.config.TestService"/> 
+	<bean id="hello" class="com.ioc.lifecycle.Hello" destroy-method="myCleanUp"/>
 	
 </beans>

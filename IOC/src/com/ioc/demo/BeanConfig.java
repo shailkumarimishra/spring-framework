@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfig {
 //	<bean id="hello" class="com.ioc.demo.Hello"/>  
 //	<bean id="a" class="com.ioc.demo.A"/>
-	@Bean
+	@Bean(initMethod = "myInit")
 	public A beanA() {
 		return new A();
 	}
