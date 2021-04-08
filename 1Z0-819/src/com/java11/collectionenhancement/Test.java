@@ -1,12 +1,12 @@
 package com.java11.collectionenhancement;
 
+import static java.util.Map.entry;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import static java.util.Map.entry;
 
 public class Test {
 
@@ -37,6 +37,7 @@ public class Test {
 		System.out.println(ofEntries);
 		Map<Integer, String> ofEntries2 = Map.ofEntries(entry(1, "tulsi"), entry(2, "alok"), entry(3, "mahi"));
 		System.out.println(ofEntries2);
+	
 	}
 
 }

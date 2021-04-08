@@ -1,0 +1,55 @@
+JPMS(Java Platform Module System):-
+
+Difference between jar file and java Module:-
+1. Jar is a group of packages and each package contains several classes.
+
+   Module is also a group of packages and each package contains several classes.Module can also contain one 
+   special file module-info.java to hold module specific dependencies and configuration information.
+   
+2. In jar file their is no way to specify dependent jar file information but in java module their is a special
+   module-info.java to specify the dependent jar.
+   
+3. Their is no way to check all jar file dependencies at the beginning hence in the middle of the program
+   execution their may be a chance of NoClassDefFoundError. but in java module jvm will check all the module
+   dependencies at the beginning with the help of module-info.java and if any dependencies is missing then
+   it will not use the application hence their is no chance of NoClassDefFoundError.
+   
+4. In the class path the order of jar files are important and jvm will always consider from left to right for the
+   required .class file. If multiple jar contains the same .class jar file then their may be a chance of version 
+   conflict and results abnormal behaviour of our application.
+	
+   But in the module path order is not important jvm will always check from the dependent module only for the 
+   required .class files. Hence their is no chance of version conflict and results abnormal behaviour of 
+   our application. 
+	
+5. In jar file there is no mechanism to control access to the packages. Everything present in the jar file
+   is public to everyone. Anyone can access any component from the jar file. Hence there may be a chance 
+   of security problem.
+   
+   But in module there is a mechanism to control access to the package. Only exported packages are visual to
+   other modules hence there is no chance of security problem.
+   
+6. jar follows monolithic structure and aplication will become heavy weight and not suitable for small devices.
+   
+   But module follows distributed structure and aplications will become light weighted and suitable for small
+   devices.
+   
+7. jar files approach can be used for iot devices but module based approach can be used for iot devices.  
+   
+module-info.java 
+module MyModule {
+exports 
+uses
+provides 
+}  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
