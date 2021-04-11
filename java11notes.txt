@@ -43,6 +43,35 @@ uses
 provides 
 }  
    
+->Compile and execute java module:-
+ compile :-
+	1. javac --module-source-path src -d out -m moduleA
+	2. javac --module-source-path src -d out --module moduleA
+	3. javac --module-source-path src -d out src/moduleA/module-info.java src/moduleA/pack1/Test.java
+	4. javac --module-source-path src -d out E:/java11/out/moduleA/module-info.java E:/java11/out/moduleA/pack1/Test.java
+ run:-
+ 1. java --module-path out -m moduleA/pack1.Test
+ 2. java -p out -m moduleA/pack1.Test
+ 3. java -p out --module moduleA/pack1.Test 
+ 4. java -p out --add-modules moduleA pack1.Test
+ 5. java -p E:\java11\out --add-modules moduleA pack1.Test
+ 
+ open module moduleB{
+ //other modules can access its private member using reflection.If you are using open tag in font of module 
+ //then you can apply reflection concept.
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+   
+   
    
    
    
