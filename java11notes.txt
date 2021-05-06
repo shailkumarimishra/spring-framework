@@ -61,9 +61,25 @@ provides
  //then you can apply reflection concept.
  }
  
+->jlink:-
+with the help of jlink we can create our own custom jre. 
+1. compilation
+	go to upto your required directory e.g; E:\java11>
+	jlink --module-path out --add-modules moduleA,java.base --output mishrajre
+	
+	jlink --module-path out --add-modules moduleA,java.base --compress 2 --output mishrajre
+	
+	jlink --module-path out --add-modules moduleA,java.base --launcher anuapp=moduleA/pack1.Test --compress 2 --output mishrajre
  
- 
- 
+2. run your application
+	go to bin folder of your custom jre then execute below command
+	java -m moduleA/pack1.Test
+
+
+
+
+
+
  
  
  

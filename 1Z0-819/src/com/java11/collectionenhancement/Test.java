@@ -37,7 +37,7 @@ public class Test {
 		System.out.println(ofEntries);
 		Map<Integer, String> ofEntries2 = Map.ofEntries(entry(1, "tulsi"), entry(2, "alok"), entry(3, "mahi"));
 		System.out.println(ofEntries2);
-	
+		
 	}
 
 }

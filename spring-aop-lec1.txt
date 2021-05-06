@@ -1,0 +1,111 @@
+AOP (Aspect Oriented programming):-
+->	AOP is a new kind of programming technique which is mainly used to seperate cross cutting 
+	concerns(commonly required middle level services) from core bussiness logic of the application.
+	Without AOP:-
+	class AccountServices{
+		//LogService...middle level services 
+		public void deposit(double amount){//....bussiness logic
+			if(amount>= balance){
+				try{
+					log.info("");//...middle level services
+					transaction.begin();//...middle level services
+					//operation1....   //....bussiness logic
+				    //operation2....   //....bussiness logic
+					//operation3....   //....bussiness logic
+					transaction.commit();//...middle level services
+					log.info("");//...middle level services
+				}catch(Exception e){
+					transaction.rollBack();//...middle level services
+					log.error();//...middle level services
+				 }
+			}
+		}
+	}
+	In the above code, core bussiness logic is mixed with middle level services like logging and transaction.
+	If you want to change existing transaction API or logging API with new one then you need to modify the entire 
+	application which may give maintenance problem.
+	
+	With AOP:-
+	class AccountServices{
+		public void deposit(double amount){
+			//operation1...
+			//operation2...
+			//operation3...
+		}
+	}
+	
+	classs TransactionServices{
+		public void begin(){
+			
+		}
+		public void commit(){
+		}
+		public void rollBack(){
+		}
+		
+	}
+	
+	class LogService{
+		public void log(){
+		}
+	}
+	
+	class SecurityServices{
+		public void verifyUser(){
+		}
+	}
+	
+	class Client{
+		try{
+			ss.verifyUser();
+			ls.log();
+			tx.begin();
+			as.deposit();
+			tx.commit();
+		}catch(Exception e){
+			ls.error();
+			tx.rollBack();
+		 }
+	}
+	
+	In the above code, core bussiness logic is completely seperated from middle level services.
+	If you want to change existing transaction, security or logging implementations with new one then that will
+	not impact the bussiness services.
+	
+Spring AOP Terminology:-
+1. Aspects:- Commonly required middle level services(security, transaction, logging) which you are implementing
+			 for enterprise application are called as Aspects.
+
+2. Advice:- Implementation of a middle level services(Aspect) is called as Advice. 
+			i.e; Advice is a class that contains code for Aspects like security, transaction, logging.
+
+3. JoinPoint:- JoinPoint is a point in the programme execution pair where you want to apply 
+			   Advice (to run middle level services code).
+			   Spring AOP supports the following JoinPoint:-
+			   a) methodBefore()
+			   b) methodReturning()
+			   c) methodThrowing()
+			   
+4. PointCut:- PointCut is a collection of JoinPoint.
+
+5. Advisor:- Advisor is a combination of Advice and PointCut.
+
+6. Target:- Target is an object of your bussiness service after applying the Advices or Advisors.
+
+7. Proxy:- Proxy is an object of your bussiness service before applying the Advices or Advisors.
+
+8. Weaving:- Weaving is the process of applying the Advices or Advisors to the target object at given PointCut
+			 to get the Proxy object.
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
