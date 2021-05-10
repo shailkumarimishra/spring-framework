@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="E:/spring-framework/spring_jar/spring-context-5.2.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/spring-framework/spring_jar/spring-core-5.2.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="E:/spring-framework/spring_jar/spring-expression-5.2.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/HP/Downloads/aspectjweaver-1.9.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -97,6 +97,20 @@ Spring AOP Terminology:-
 8. Weaving:- Weaving is the process of applying the Advices or Advisors to the target object at given PointCut
 			 to get the Proxy object.
 
+PointCut Designators-
+1. execution-
+2. within-
+3. this-
+4. target-
+5. args(arguments)-
+6. @args-
+7. @target-
+8. @within-
+9. @annotation-
+
+-> How to write PointCut Definition:- 
+   To apply any method in a package or in sub-package 
+   @Pointcut("execution(* com.aop.*Service.m*(..))")   
 
 
 
