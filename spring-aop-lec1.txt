@@ -132,7 +132,7 @@ The execution of any public method that takes first parameter of any type & seco
 	execution(public * *(*,String))
 	
 The execution of any method defined by the customerService interface present in com.ambe.service package
-	execution(* com.ambe.service.CustomerService.display(..))
+	execution(* com.ambe.service.CustomerService.*(..))
 	
 The execution of show and display method defined by the customerService interface present in com.ambe.service 
 package	
