@@ -109,9 +109,70 @@ PointCut Designators-
 9. @annotation-
 
 -> How to write PointCut Definition:- 
-   To apply any method in a package or in sub-package 
-   @Pointcut("execution(* com.aop.*Service.m*(..))")   
 
+The execution of any public method
+	execution(public * *(..))
+	
+The execution of any method that begins with ambe
+	execution(* ambe*(..))
+	
+The execution of any public method with no argument	
+	execution(public * *())
+
+The execution of any public method with one argument of any type
+	execution(public * *(*))	
+
+The execution of any public method with one argument of String type	
+	execution(public * *(String)) 
+	
+The execution of any public method with any number of arguments (0 or more) of any type	
+	execution(public * *(..))
+
+The execution of any public method that takes first parameter of any type & second parameter of String type	
+	execution(public * *(*,String))
+	
+The execution of any method defined by the customerService interface present in com.ambe.service package
+	execution(* com.ambe.service.CustomerService.display(..))
+	
+The execution of show and display method defined by the customerService interface present in com.ambe.service 
+package	
+	execution(* com.ambe.service.CustomerService.show(..) && * com.ambe.service.CustomerService.display(..))
+	or
+	execution(* com.ambe.service.CustomerService.show(..))
+	execution(* com.ambe.service.CustomerService.display(..))
+
+The execution of any method defined in the package com.ambe.service
+	execution(* com.ambe.service.*.*(..))
+
+The execution of any method defined in the com.ambe.service package or one of it's sub packages
+	execution(* com.ambe.service..*.*(..))
+	
+Any joint point (method execution only in spring AOP) within the package com.ambe.service
+	within(com.ambe.service.*)
+
+Any joint point (method execution only in spring AOP) within the package com.ambe.service or one of it's
+sub packages
+	within(com.ambe.service..*)
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 	
