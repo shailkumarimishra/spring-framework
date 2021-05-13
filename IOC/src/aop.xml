@@ -16,4 +16,7 @@
 <bean id="hi" class="com.aop.HiServiceImpl"/>
 <bean id="ls" class="com.aop.LogService"/>
 <bean id="ss" class="com.aop.SecurityService"/>
+<bean id="perform" class="com.aop.Performance"/>
+<bean id="ate" class="com.aop.AfterThrowExample"/>
+<bean id="are" class="com.aop.AfterReturningExample"/>
 </beans>

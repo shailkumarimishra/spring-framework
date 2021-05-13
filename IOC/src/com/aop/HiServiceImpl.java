@@ -19,4 +19,16 @@ public class HiServiceImpl implements HiService {
 		System.out.println("HiServiceImpl test()");
 	}
 
+	@Override
+	public void m6() throws Exception {
+		System.out.println("HiServiceImpl m6()");
+		throw new Exception("My Exception");
+	}
+
+	@Override
+	public String m7() {
+		System.out.println("HiServiceImpl m7()");
+		return "shail";
+	}
+
 }
