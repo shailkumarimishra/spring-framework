@@ -1,0 +1,28 @@
+Spring Boot
+Q1. What is a Spring Boot?
+Answer:- It is a module of the spring framework. It brings all common modules under single umbrella.
+		 Spring Boot Dev Tools- live reload to speed up development.
+		 Spring Boot Actuator-  Monitering and Management of Application.
+		 Spring Boot Starters-  Dependency set for all technologies to minimize setup time.
+		 Spring Boot Auto-Configuration- configuration templates for technologies to minimize setup time.
+
+Note:- Spring Boot supports following embedeed containers:-
+		1. Tomcat
+		2. Jetty
+		3. Underflow
+		
+Q2. What are the advantages of using Spring?
+Anwer:- 1. Provides set of managed dependency (It resolves version conflict).
+		2. Provides maven plugins.
+		3. Provides auto configuration which reduces boilerplate configuration and allow easy customization when
+		   defaults are not sufficient.
+		4. Maximizes productivity.
+		5. Simplifies Deployment, by allowing to create executable jar.
+		6. Provides non functional features common for projects- externalized configuration, security, matrix,
+		   health checks.
+		
+@SpringBootApplication
+It is a combination of :-
+1. @Configuration
+2. @EnableAutoConfiguration
+3. @ComponentScan		
