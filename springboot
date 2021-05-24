@@ -28,3 +28,22 @@ It is a combination of :-
 3. @ComponentScan		
 
 Note:- @RestController is the combination of Controller and ResponseBody
+
+Q Difference between @Repositiory and @Service? 
+Q Difference between @RequestMapping and @GetMapping/@PostMapping?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
