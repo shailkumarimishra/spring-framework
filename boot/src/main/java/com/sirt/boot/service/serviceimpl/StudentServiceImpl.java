@@ -2,7 +2,6 @@ package com.sirt.boot.service.serviceimpl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +43,46 @@ public class StudentServiceImpl implements StudentService{
 		stu.setPhoneNo(entity.getPhoneNo());
 		stu.setEmail(entity.getEmail());
 		return stu;
+	}
+
+	@Override
+	public void save(Student stu) {
+		StudentEntity entity = mappingStudentToStudentEntity(stu);
+		repo.save(entity);
+	}
+
+	@Override
+	public void save(List<Student> stuList) {
+		List<StudentEntity> entityList=new ArrayList<>();	
+		for(Student stu:stuList) {
+		StudentEntity entity=new StudentEntity();
+		entity.setSid(stu.getSid());
+		entity.setName(stu.getName());
+		entity.setPhoneNo(stu.getPhoneNo());
+		entity.setEmail(stu.getEmail());
+		entityList.add(entity);
+		}
+		repo.saveAll(entityList);
+	}
+
+	@Override
+	public void deleteById(int sid) {
+		repo.deleteById(sid);
+	}
+
+	@Override
+	public void updateRecord(Student stu) {
+		StudentEntity entity = mappingStudentToStudentEntity(stu);
+		repo.save(entity);
+	}
+
+	private StudentEntity mappingStudentToStudentEntity(Student stu) {
+		StudentEntity entity=new StudentEntity();
+		entity.setSid(stu.getSid());
+		entity.setName(stu.getName());
+		entity.setPhoneNo(stu.getPhoneNo());
+		entity.setEmail(stu.getEmail());
+		return entity;
 	}
 
 }

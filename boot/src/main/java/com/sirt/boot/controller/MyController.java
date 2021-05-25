@@ -2,13 +2,16 @@ package com.sirt.boot.controller;
 
 import java.util.List;
 
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,6 +67,25 @@ public class MyController {
 @PostMapping(path="/students/save")
 public String saveStudent(@RequestBody Student stu) {
 	log.info("student data {}",stu);
+	service.save(stu);
 	return "student saved successfully";
+}
+@PostMapping(path="/students/saveall")
+public String saveAllStudent(@RequestBody List<Student> stuList) {
+	log.info("student data {}",stuList);
+	service.save(stuList);
+	return "All students saved successfully";
+}
+@DeleteMapping(path="/students/{id}")
+public String deleteStudent(@PathVariable("id") int sid) {
+	log.info("student data {}",sid);
+	service.deleteById(sid);
+	return "Student id= "+sid+" deleted successfully";
+}
+@PutMapping(path="/students/update")
+public String updateStudent(@RequestBody Student stu) {
+	log.info("student data {}",stu);
+	service.updateRecord(stu);
+	return "Student id= "+stu.getSid()+" data updated";
 }
 }
