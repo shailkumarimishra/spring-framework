@@ -32,6 +32,107 @@ Note:- @RestController is the combination of Controller and ResponseBody
 Q Difference between @Repositiory and @Service? 
 Q Difference between @RequestMapping and @GetMapping/@PostMapping?
 
+Q What is content negotiation and how spring boot convert java object to XML or json?
+Ans:- Content Negotiation is a data schema like XML,json.
+Spring Boot with the help of HttpMessageConverter, it will convert from object to other data format. If the 
+required dependencies are available in classpath otherwise  it will throw an exception related to content 
+negotiation with status code 406 by default spring boot uses json implementation of HttpMessageConverter from
+jackson libraries. 
+
+Q Difference b/w @RequestParam and @PathVariable?
+Ans:-
+	@RequestParam maps Query string parameters to handle method arguments.
+	e.g; http://localhost:9999/students/greetings?name=shail
+		 http://localhost:9999/students/greetings?name=Shail&state=Bihar
+	
+	@PathVariable maps a part of the url to handle method argument.
+	e.g; http://localhost:9999/students/131
+		 http://localhost:9999/students/131/Shail
+		 
+REST:-
+REST stands for Representational State Transfer.
+It supports Http and Https protocol.
+Rest methods/verbose/operations:-
+1. GET
+2. POST
+3. DELETE
+4. PUT 
+5. TRACE
+6. HEAD
+7. PATCH
+8. OPTIONS
+
+Idempotent (No change) :-
+1. GET - Yes safe
+2. POST - No unsafe
+3. DELETE - Yes unsafe
+4. PUT - Yes unsafe
+5. TRACE - Yes safe
+6. HEAD - Yes safe
+7. PATCH - Yes unsafe
+8. OPTIONS - Yes safe
+
+Q what are the Http status return codes?
+A) 1XX
+    Informational :- The Request has been received and processing of it continues.
+B) 2XX
+	Successful :- The Request has been successfully received, understood and accepted.
+C) 3XX
+	Redirection:- Further action is needed to complete the request.
+D) 4XX
+	Client Error:- The Request is incorrect.
+E) 5XX
+	Server Error:- The Server failed to process the request.
+	
+	Important Http status Code:-
+	1) 200 :- OK
+	2) 201 :- Created
+	3) 202 :- Accepted
+	4) 404 :- Bad Request
+	5) 401 :- UnAuthorized
+	6) 406 :- Content Negotiation
+	7) 500 :- Server Error
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
