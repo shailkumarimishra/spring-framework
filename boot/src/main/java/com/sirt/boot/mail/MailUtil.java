@@ -33,11 +33,11 @@ public class MailUtil {
 		MimeMessage createMimeMessage = mailSender.createMimeMessage();
 		try {
 			MimeMessageHelper helper=new MimeMessageHelper(createMimeMessage,true);
-			String[] recepients= {"kalawati.ambe12@gmail.com","shradha.jadiya1999@gmail.com","anjalijatav28@gmail.com"};
+			String[] recepients= {"shailtinu2000@gmail.com","kalawati.ambe12@gmail.com","shradha.jadiya1999@gmail.com","anjalijatav28@gmail.com"};
 		    helper.setTo(recepients);
 			helper.setSubject("Testing From Shail Mishra");
 			helper.setText("Hi\n This is Test Mail from Shail Mishra");
-			helper.addAttachment("MyPhoto.jpg",new ClassPathResource("photo.jpg"));
+			helper.addAttachment("Mylearning java.rtf",new ClassPathResource("learning java.rtf"));
 			mailSender.send(createMimeMessage);
 			log.info("Attachment has been sent");
 		} catch (MessagingException e) {
