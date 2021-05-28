@@ -93,6 +93,95 @@ E) 5XX
 	6) 406 :- Content Negotiation
 	7) 500 :- Server Error
 	
+Twilio SMS Configuration:-
+1. Create an account in twilio.
+2. Add twilio dependency in pom.xml
+3. Add twilio username, password and trial number in application.properties file
+4. To read details of twilio from properties file to java object.
+   a) Create a class e.g; TwilioConfiguration and add required field username, password and trial number
+   b) Add @Configuration and @ConfigurationProperties("twilio") for getter and setter you can use lombok 
+	  or generate getter and setter.
+5. Initialize twilio details first like below:-
+	@Slf4j
+	@Configuration
+	public class TwilioInitializer {
+	
+	private TwilioConfiguration twilioConfig;
+	@Autowired
+	public TwilioInitializer(TwilioConfiguration twilioConfig) {
+		this.twilioConfig=twilioConfig;
+		Twilio.init(twilioConfig.getAccountSid(),twilioConfig.getAuthToken());
+		log.info("twilio initialized with accountSid {}",twilioConfig.getAccountSid());
+	
+		
+		}
+
+	}
+6. Create a class e.g; SMSSender where you can write the logic to send sms like below:- 
+	@Slf4j
+	@Component
+	public class SMSSender {
+		@Autowired
+		private TwilioConfiguration twilioConfig;
+		public void sendSms(SMSRequest sms) {
+			if(isPhoneNumberValid(sms.getPhoneNo())) {
+				PhoneNumber to = new PhoneNumber(sms.getPhoneNo());
+				PhoneNumber from = new PhoneNumber(twilioConfig.getTrialNumber());
+				String message = sms.getMessage();
+				MessageCreator creator = Message.creator(to,from,message);
+				creator.create();
+				log.info("message has been send to {}",sms.getPhoneNo());
+			}
+			else {
+				throw new IllegalArgumentException("Phone number "+sms.getPhoneNo()+" is not a valid number");
+			}
+		}
+		private boolean isPhoneNumberValid(String phoneNo) {
+	//		to do implement phone validation
+			return true;
+		}
+
+	}
+7. Write a method in a MyController class to test the api like below:-
+	@PostMapping("/sms")
+	public ResponseEntity<String> sendSMS(@RequestBody SMSRequest smsRequest) {
+		smsSender.sendSms(smsRequest);
+		return new ResponseEntity<>("message has been send",HttpStatus.OK);
+		
+	}
+8. Prepare test data like below:-
+	{
+	"phoneNo": "+917354754288",
+	"message": "Hii Ambe how are you? Iam Shail Mishra."
+	}
+9. Enjoy after sending a sms to your friend.
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	
 	
 	

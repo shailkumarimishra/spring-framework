@@ -2,6 +2,8 @@ package com.sirt.boot.controller;
 
 import java.util.List;
 
+import javax.net.ssl.SSLEngineResult.Status;
+
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sirt.boot.service.StudentService;
+import com.sirt.boot.sms.SMSSender;
+import com.sirt.boot.vo.SMSRequest;
 import com.sirt.boot.vo.Student;
 
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +44,8 @@ import lombok.extern.slf4j.Slf4j;
 public class MyController {
 	@Autowired
 	private StudentService service;
+	@Autowired
+	private SMSSender smsSender;
 
 	@GetMapping("/greetings")
 	public String greetings(@RequestParam String name,@RequestParam String state) {
@@ -92,5 +98,12 @@ public class MyController {
 		log.info("student data {}", stu);
 		service.updateRecord(stu);
 		return "Student id= " + stu.getSid() + " data updated";
+	}
+	
+	@PostMapping("/sms")
+	public ResponseEntity<String> sendSMS(@RequestBody SMSRequest smsRequest) {
+		smsSender.sendSms(smsRequest);
+		return new ResponseEntity<>("message has been send",HttpStatus.OK);
+		
 	}
 }
