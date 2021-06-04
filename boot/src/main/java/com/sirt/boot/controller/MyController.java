@@ -1,8 +1,15 @@
 package com.sirt.boot.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.net.ssl.SSLEngineResult.Status;
+import javax.validation.Valid;
 
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +29,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sirt.boot.hibernate.CollectionMapping;
+import com.sirt.boot.hibernate.SimpleMapping;
+import com.sirt.boot.repository.CollectionMappingRepo;
+import com.sirt.boot.repository.SimpleMappingRepo;
+import com.sirt.boot.repository.StudentRepo;
 import com.sirt.boot.service.StudentService;
 import com.sirt.boot.sms.SMSSender;
 import com.sirt.boot.vo.SMSRequest;
@@ -46,6 +58,43 @@ public class MyController {
 	private StudentService service;
 	@Autowired
 	private SMSSender smsSender;
+	@Autowired
+	private SimpleMappingRepo repo;
+	@Autowired
+	private CollectionMappingRepo cmRepo;
+	
+	@GetMapping("/test")
+	public String hibernateTest() {
+		SimpleMapping sm = new SimpleMapping();
+		sm.setAccountNo(123);
+		sm.setAccountBalance(1000.20);
+		sm.setAccountType("Saving");
+		sm.setOpenDate(new Date());
+		repo.save(sm);
+		return "Successful";
+	}
+	
+	@GetMapping("/cmapping")
+	public String collectionMapping() {
+		CollectionMapping cm = new CollectionMapping();
+		String[] courses = { "Java", "Jdbc", "Spring" };
+		List<Integer> phones = new ArrayList<>();
+		phones.add(123);
+		phones.add(456);
+		Set<String> emails = new HashSet<>();
+		emails.add("make@gmail.com");
+		emails.add("tulsi@gmail.com");
+		Map<String, String> reference = new HashMap<>();
+		reference.put("State", "Bihar");
+		reference.put("City", "Patna");
+		cm.setCourses(courses);
+		cm.setPhones(phones);
+		cm.setEmails(emails);
+		cm.setReference(reference);
+		cmRepo.save(cm);
+
+		return "Successful";
+	}
 
 	@GetMapping("/greetings")
 	public String greetings(@RequestParam String name,@RequestParam String state) {
@@ -73,7 +122,7 @@ public class MyController {
 	}
 
 	@PostMapping(path = "/save")
-	public String saveStudent(@RequestBody Student stu) {
+	public String saveStudent(@Valid @RequestBody Student stu) {
 		log.info("student data {}", stu);
 		service.save(stu);
 		return "student saved successfully";

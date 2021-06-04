@@ -155,7 +155,22 @@ Twilio SMS Configuration:-
 	"message": "Hii Ambe how are you? Iam Shail Mishra."
 	}
 9. Enjoy after sending a sms to your friend.
+
+-> BeanValidationMessage and CustomExceptionHandling:-
+
+1.Add validation dependency in pom.xml
+
+2.Add required validation annotation on the fields like below-
+  @NotBlank(message = "firstName should not be empty")
+	private String firstName;
 	
+3.Create a class for error message format like ResponseError 
+
+4.Override ResponseEntityExceptionHandler methods in your customExceptionHandler class
+  a) Add @ControllerAdvice at customExceptionHandler
+  b) @ExceptionHandler at customExceptionHandler methods
+  
+5.Add @Valid annotation to trigger the validation	
 
 
 
