@@ -27,20 +27,23 @@ public class CollectionMapping {
 	@Column(name = "sid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int sid;
+	
 	@IndexColumn(name="ids")
 	@ElementCollection
 	@JoinTable(name = "courses_info", joinColumns = @JoinColumn(name = "sid"))
 	@Column(name = "courses")
-	
 	private String[] courses;
+	
 	@ElementCollection
 	@JoinTable(name = "emails_info", joinColumns = @JoinColumn(name = "sid"))
 	@Column(name = "emails")
 	private Set<String> emails;
+	
 	@ElementCollection
 	@JoinTable(name = "phones_info", joinColumns = @JoinColumn(name = "sid"))
 	@Column(name = "phones")
 	private List<Integer> phones;
+	
 	@ElementCollection
 	@JoinTable(name = "ref_info", joinColumns = @JoinColumn(name = "sid"))
 	@Column(name = "reference")
