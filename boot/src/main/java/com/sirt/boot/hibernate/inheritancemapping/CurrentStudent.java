@@ -1,6 +1,9 @@
 package com.sirt.boot.hibernate.inheritancemapping;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -12,7 +15,11 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "current_student")
-@PrimaryKeyJoinColumn(name = "sid")
+//@PrimaryKeyJoinColumn(name = "sid")
+//@DiscriminatorValue("cur_stu")
+@AttributeOverrides({
+	@AttributeOverride(name = "name", column = @Column(name="name"))
+})
 public class CurrentStudent extends Student {
 	@Column(name = "fee_balance")
 	private double feeBalance;
@@ -34,6 +41,15 @@ public class CurrentStudent extends Student {
 		this.timing = timing;
 		this.branch = branch;
 	}
+
+	public CurrentStudent(String name,double feeBalance, String timing, String branch) {
+		super(name);
+		this.feeBalance = feeBalance;
+		this.timing = timing;
+		this.branch = branch;
+	}
+
+	
 
 	
 	

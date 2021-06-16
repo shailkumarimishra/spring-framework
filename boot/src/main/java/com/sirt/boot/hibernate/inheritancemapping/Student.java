@@ -1,6 +1,8 @@
 package com.sirt.boot.hibernate.inheritancemapping;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -14,7 +16,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "clc_student")
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name = "stu_type",discriminatorType=DiscriminatorType.STRING)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Student {
 	@Id
 	@Column(name = "sid")
@@ -43,6 +48,10 @@ public class Student {
 		this.city = city;
 		this.status = status;
 		this.totalFee = totalFee;
+	}
+
+	public Student(String name) {
+		this.name=name;
 	}
 	
 	

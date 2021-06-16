@@ -35,7 +35,7 @@ Hibernate Features:-
          b: collection mapping
          c: inheitance mapping
             1: table per subclass mapping
-            2: table per class mapping
+            2: table per class mapping(single table)
             3: table per concrete class mapping
          d: association mapping
             1: one to one mapping
@@ -55,7 +55,26 @@ Hibernate Features:-
          d: Named SQL
       9: Hibernate provides various catching mechanisms.
      10: Hibernate system uses many persistance best practices and forces to developer to use them for better 
-         performance.	  
+         performance.
+
+## Association Mapping :-
+---------------------------
+
+1. OneToOne (Bidirectional)
+step1: Employee class must contain Account as an attribute and vice-versa refer oneToone mapping example. 
+step2: Put @OneToOne and @JoinColumn(name="fk_emp_id") in Account class like below-
+         @OneToOne
+	     @JoinColumn(name = "fk_emp_id")
+	   private Employee emp;
+step3: Put @OneToOne(mappedBy="emp") in Employee class like below -
+         @OneToOne(mappedBy = "emp")
+	     private Account account;
+
+2. OneToOne(Unidirectional)
+step1: In Account class put @OneToOne and @JoinColumn(name="fk_emp_id") in Account class like below-
+         @OneToOne
+	     @JoinColumn(name = "fk_emp_id")
+	     private Employee emp; 		 
       	  
 	  
 	  

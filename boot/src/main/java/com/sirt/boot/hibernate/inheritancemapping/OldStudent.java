@@ -1,6 +1,7 @@
 package com.sirt.boot.hibernate.inheritancemapping;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -12,7 +13,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "old_student")
-@PrimaryKeyJoinColumn(name = "sid")
+//@PrimaryKeyJoinColumn(name = "sid")
+@DiscriminatorValue("old_stu")
 public class OldStudent extends Student {
 	@Column(name = "old_company")
 	private String oldCompany;

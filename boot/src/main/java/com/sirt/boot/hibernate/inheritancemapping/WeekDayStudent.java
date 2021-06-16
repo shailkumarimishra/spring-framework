@@ -1,6 +1,7 @@
 package com.sirt.boot.hibernate.inheritancemapping;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -12,7 +13,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "week_day_student")
-@PrimaryKeyJoinColumn(name = "sid")
+//@PrimaryKeyJoinColumn(name = "sid")
+@DiscriminatorValue("weekday_stu")
 public class WeekDayStudent extends CurrentStudent {
 	@Column(name = "qualification")
 	private String qualification;
@@ -34,6 +36,16 @@ public class WeekDayStudent extends CurrentStudent {
 		this.percentage = percentage;
 		this.yop = yop;
 	}
+
+	public WeekDayStudent(String name, double feeBalance, String timing, String branch, String qualification,
+			double percentage, int yop) {
+		super(name, feeBalance, timing, branch);
+		this.qualification = qualification;
+		this.percentage = percentage;
+		this.yop = yop;
+	}
+
+	
 	
 	
 
