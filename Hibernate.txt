@@ -74,11 +74,47 @@ step3: Put @OneToOne(mappedBy="emp") in Employee class like below -
 step1: In Account class put @OneToOne and @JoinColumn(name="fk_emp_id") in Account class like below-
          @OneToOne
 	     @JoinColumn(name = "fk_emp_id")
-	     private Employee emp; 		 
-      	  
-	  
-	  
-	  
+	     private Employee emp; 		
+
+## Validation in spring MVC (Annotation based):-
+--------------------------------------------------
+
+	1. Add hibernate validator dependency in pom.xml
+	2. Use Validator Annotation like @NotEmpty, @Size, etc on Model class attributes
+    3. To enable hibernate validator in the Controller class method use @Valid in front of Model class and
+	   to capture validation error message use BindingResult class like below:-
+       public String submitForm(@ModelAttribute("registration") @Valid Registration registration, BindingResult
+	   bindingResult, Model model){}
+	   
+Note:- Place BindingResult class just after Registration Model class otherwise you will get 
+		RunTimeException.
+		
+## Multiform Wizard:-
+-----------------------
+
+_targetX :- for navigation forward and backward.
+_cancel  :- for retain on the same page.
+_finish  :- To complete the form.
+_page    :- It indicates the current page and you have to use inside hidden field.
+
+## Multiform WizardController:-	  
+---------------------------------
+
+@SessionAttributes :- To place model value in the user session.
+	After completing the form you must have to destroy the session 
+		SessionStatus status;
+		status.setComplete();
+
+To get the current page information you have to use @RequestParam("_page")
+
+To distinguish between GetMapping and PostMapping:-
+---------------------------------------------------------
+A.Mapping Type	B.common Uri	C.params			D.status
+PostMapping	      Wizard		_finish	        distinguish(colC)
+GetMapping	      Wizard		            	distinguish(colA)
+PostMapping	      Wizard		_cancel			distinguish(colC)
+PostMapping	      Wizard		     			distinguish(colA)
+
 	  
 	  
 	  
